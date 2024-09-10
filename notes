@@ -1,0 +1,15 @@
+Here's a revised version of the steps for setting up Keycloak:
+
+1. **Create a Realm**: In Keycloak, create a new realm with the name "yourrealm."
+
+2. **Create a Client**:
+   - **Client ID**: Set to "flask-app."
+   - **Name**: Enter "flask-app."
+   - **Valid Redirect URIs**: Set to "http://127.0.0.1:5000/*"
+   - **Web Origins**: Set to "*"
+   - **Client Authentication**: Enable it.
+   - **Client Secret**: Copy the client secret from the "Credentials" tab.
+
+3. **Create a Group**: Add a new group named "flask_group."
+
+4. **Create Users**: Add users and assign them to the "flask_group" group, as defined in the database.
