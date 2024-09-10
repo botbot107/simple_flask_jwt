@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Page</title>
+</head>
+<body>
+    <h1>Click the Button</h1>
+    <button id="clickButton">Click Me!</button>
+    <p id="message"></p>
+
+    <script>
+        document.getElementById('clickButton').addEventListener('click', function() {
+            // Retrieve the CSRF token from cookies
+            const csrfToken = document.cookie.split('; ').find(row => row.startsWith('csrf_access_token=')).split('=')[1];
+
+            fetch('/click', {
+                method: 'POST',
+                credentials: 'same-origin',  // Send cookies with the request
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken  // Include CSRF token in the headers
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Failed to log click');
+                }
+            })
+            .then(data => {
+                document.getElementById('message').textContent = data.message;
+            })
+            .catch(error => {
+                document.getElementById('message').textContent = error.message;
+            });
+        });
+    </script>
+</body>
+</html>

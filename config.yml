@@ -1,0 +1,18 @@
+database:
+  driver: "MySQL ODBC 8.0 Driver"
+  host: "192.168.91.128"
+  port: 3306
+  name: "proxy_hub"
+  username: "proxy_hub_sub"
+  password: "2145Hg3412!"
+
+keycloak:
+  server: "http://192.168.91.128:8080"
+  realm: "yourrealm"
+  client_id: "flask-app"
+  client_secret: "qouUApHSHJiG9wYiJLeLozZiCmKIuEvE"
+  redirect_uri: "http://localhost:5000/callback"
+
+jwt:
+  secret_key: "e8f7a3c8b3c1f5b7f82b5a0943f8aebf9d76b4c5a7f8e4c03d917a4c5e9f6d2e"
+  cookie_csrf_protect: True  # Enable CSRF protection

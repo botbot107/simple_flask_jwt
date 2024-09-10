@@ -1,0 +1,6 @@
+Flask
+pyodbc
+flask-jwt-extended
+PyYAML
+mysql-connector-python==9.0.0
+authlib
